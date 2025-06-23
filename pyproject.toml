@@ -35,14 +35,14 @@ build-backend = "pdm.backend"
 
 
 [tool.black]
-line-length = 120  # 设置代码行的最大长度为 120 字符
-target-version = ['py312']  # 目标 Python 版本为 3.12
+line-length = 79                              # 设置代码行的最大长度为 120 字符
+target-version = ['py312']                    # 目标 Python 版本为 3.12
 
 
 [tool.isort]
-profile = "black"  # 兼容 black
-line_length = 120  # 将行长度设置为与 black 一致
-length_sort = true  # 按导入语句的长度进行排序
+profile = "black"                             # 兼容 black
+line_length = 79                              # 将行长度设置为与 black 一致
+length_sort = true                            # 按导入语句的长度进行排序
 
 # 导入自动注释
 import_heading_stdlib = "标准库导入"

@@ -35,7 +35,9 @@ mc_msg_to_qq = on_message(rule=Rule(mc_msg_rule), priority=100)
 
 
 @mc_msg_to_qq.handle()
-async def mc_msg_to_qq_handle(event: ServerMessageEvent, bot: OBBot = Depends(get_qq_bot)) -> None:
+async def mc_msg_to_qq_handle(
+    event: ServerMessageEvent, bot: OBBot = Depends(get_qq_bot)
+) -> None:
     """
     处理 Minecraft 消息事件
 
@@ -43,6 +45,8 @@ async def mc_msg_to_qq_handle(event: ServerMessageEvent, bot: OBBot = Depends(ge
     :param bot: OneBot 机器人实例
     :return: None
     """
-    message = mc_to_qq_msg(OBMessage(f"{event.player.nickname}:\n") + event.message)
+    message = mc_to_qq_msg(
+        OBMessage(f"{event.player.nickname}:\n") + event.message
+    )
     for id in plugin_config.group_sync_enable_id:
         await bot.send_group_msg(group_id=id, message=message)

@@ -34,11 +34,17 @@ qq_msg_to_mc = on_message(rule=Rule(check_group_id), priority=100, block=False)
 
 
 @qq_msg_to_mc.handle()
-async def qq_msg_to_mc_handle(event: MessageEvent, bot: MinecraftBot = Depends(get_minecraft_bot)) -> None:
+async def qq_msg_to_mc_handle(
+    event: MessageEvent, bot: MinecraftBot = Depends(get_minecraft_bot)
+) -> None:
     """
     处理群消息事件
 
     :param event: 群消息事件
     :return: None
     """
-    await bot.send_msg(message=qq_to_mc_msg(OBMessage(f"{event.sender.nickname}:\n") + event.message))
+    await bot.send_msg(
+        message=qq_to_mc_msg(
+            OBMessage(f"{event.sender.nickname}:\n") + event.message
+        )
+    )
