@@ -1,0 +1,50 @@
+[project]
+name = "QIAO-SERVER-Bot"
+version = "0.1.0"
+description = "基于NoneBot2的聊天机器人"
+readme = "README.md"
+requires-python = ">=3.12"
+authors = [
+    {name = "Qiao", email = "SugarQiao@outlook.com"},
+]
+dependencies = [
+    "nonebot-adapter-onebot>=2.4.6", 
+    "nonebot-adapter-kaiheila>=0.3.4", 
+    "nonebot-adapter-minecraft>=1.4.1", 
+    "nonebot2[httpx]>=2.4.2", 
+    "nonebot2[websockets]>=2.4.2", 
+    "nonebot-plugin-alconna>=0.58.3"
+]
+license = {text = "GPL-v3"}
+
+[tool.nonebot]
+adapters = [
+    { name = "OneBot V11", module_name = "nonebot.adapters.onebot.v11" },
+    { name = "开黑啦", module_name = "nonebot.adapters.kaiheila" },
+    { name = "Minecraft", module_name = "nonebot.adapters.minecraft" }
+]
+plugins = ["nonebot_plugin_alconna"]
+builtin_plugins = ["nonebot_plugin_alconna"]
+
+[tool.pdm]
+distribution = true
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+
+[tool.black]
+line-length = 120  # 设置代码行的最大长度为 120 字符
+target-version = ['py312']  # 目标 Python 版本为 3.12
+
+
+[tool.isort]
+profile = "black"  # 兼容 black
+line_length = 120  # 将行长度设置为与 black 一致
+length_sort = true  # 按导入语句的长度进行排序
+
+# 导入自动注释
+import_heading_stdlib = "标准库导入"
+import_heading_thirdparty = "第三方库导入"
+import_heading_firstparty = "项目内模块导入"
